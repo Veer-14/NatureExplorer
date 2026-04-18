@@ -5,90 +5,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- MAIN CONTENT -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@android:color/white">
+        android:orientation="vertical">
 
-        <!-- TOP BAR -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:title="Nature Explorer"
-            android:titleTextColor="@android:color/black"
-            android:background="@android:color/white"
-            app:navigationIcon="@android:drawable/ic_menu_sort_by_size"/>
+            android:title="Nature Explorer"/>
 
-        <!-- CONTENT -->
-        <ScrollView
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <!-- CARD 1 -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="150dp"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
 
-                <!-- CARD STYLE IMAGE -->
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="6dp">
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/nature"
-                        android:scaleType="centerCrop"/>
-                </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explore Gallery"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
 
-                <!-- TITLE -->
-                <TextView
-                    android:id="@+id/titleText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nature Explorer"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:paddingTop="16dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-                <!-- DESCRIPTION -->
-                <TextView
-                    android:id="@+id/descText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Explore the beauty of nature around you."
-                    android:textSize="15sp"
-                    android:textColor="#666666"
-                    android:paddingTop="6dp"/>
+            <!-- CARD 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
 
-                <!-- BUTTONS -->
-                <com.google.android.material.button.MaterialButton
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Explore Gallery"
-                    android:layout_marginTop="20dp"
-                    app:cornerRadius="12dp"/>
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="View Favorites"
-                    android:layout_marginTop="10dp"
-                    app:cornerRadius="12dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Learn About Nature"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
 
-            </LinearLayout>
-        </ScrollView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
+        </LinearLayout>
     </LinearLayout>
 
-    <!-- NAVIGATION DRAWER -->
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="280dp"

@@ -1,5 +1,7 @@
 package com.example.natureexplorer
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,23 +24,40 @@ class MainActivity : AppCompatActivity() {
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
-            R.string.open,
-            R.string.close
+            R.string.open, R.string.close
         )
 
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener {
-            val message = when (it.itemId) {
-                R.id.home -> "Home clicked"
-                R.id.gallery -> "Gallery clicked"
-                R.id.favorites -> "Favorites clicked"
-                R.id.settings -> "Settings clicked"
-                else -> ""
+
+            when (it.itemId) {
+
+                R.id.home -> {
+                    Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show()
+                }
+
+                R.id.gallery -> {
+                    startActivity(Intent(this, GalleryActivity::class.java))
+                }
+
+                // 📧 IMPLICIT INTENT (EMAIL)
+                R.id.favorites -> {
+                    val intent = Intent(Intent.ACTION_SEND)
+                    intent.type = "message/rfc822"
+                    intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("test@email.com"))
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Nature Explorer App")
+                    startActivity(intent)
+                }
+
+                // 🌐 IMPLICIT INTENT (WEBSITE)
+                R.id.settings -> {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"))
+                    startActivity(intent)
+                }
             }
 
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             drawerLayout.closeDrawers()
             true
         }
